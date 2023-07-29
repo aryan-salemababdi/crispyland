@@ -1,19 +1,22 @@
+import { NextComponentType } from 'next';
+import { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 
 const cache = createCache({ key: 'css', prepend: true });
+const theme = createTheme();
 
-function MyApp({ Component, pageProps }) {
+const MyApp: NextComponentType<AppProps> = ({ Component, pageProps }) => {
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );
-}
+};
 
 export default MyApp;
