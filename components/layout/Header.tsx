@@ -5,7 +5,6 @@ import type { ReactElement } from "react";
 import { useRouter as useNextRouter } from "next/router";
 import {
   AppBar,
-  Toolbar,
   Grid,
   Typography,
   useScrollTrigger,
@@ -52,7 +51,7 @@ const Header = (props: Props) => {
   return (
     <>
       <HideOnScroll>
-        <AppBar sx={{ background: scroll > 30 ? "#f69435" : "none", boxShadow: "none" }}>
+        <AppBar sx={{ background: scroll > 30 ? "#f69435" : "none", boxShadow: "none",position:"fixed" }}>
           <Grid container justifyContent="space-between" alignItems="center">
             <Grid item mx={3}>
               <Button
@@ -66,7 +65,7 @@ const Header = (props: Props) => {
                 <Typography variant="h6">ورود</Typography>
               </Button>
               <Button
-                color={scroll > 20 ? "inherit" : "warning"}
+                color="inherit" 
                 onClick={() => {
                   router.push("/");
                 }}
@@ -143,7 +142,6 @@ const Header = (props: Props) => {
           </Grid>
         </AppBar>
       </HideOnScroll>
-      <Toolbar />
     </>
   );
 };
