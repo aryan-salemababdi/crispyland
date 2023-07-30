@@ -2,7 +2,9 @@ import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div
+    style={{height:"100vh"}}
+    >
         <h2>
           welcome to crispyland
         </h2>
@@ -10,4 +12,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home;
