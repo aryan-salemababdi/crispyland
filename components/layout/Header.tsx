@@ -60,7 +60,7 @@ const Header = (props: Props) => {
                   router.push("/google.com");
                 }}
                 size="medium"
-                variant={scroll > 20? "contained" : "outlined"}
+                variant="contained"
               >
                 <Typography variant="h6">ورود</Typography>
               </Button>

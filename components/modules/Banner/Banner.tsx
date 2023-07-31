@@ -8,29 +8,27 @@ interface LandingProps {
     image: string;
 }
 
-
 type Router = ReturnType<typeof useNextRouter>;
+  
+  const Banner: NextPage<LandingProps> = ({ image }) => {
 
-const Banner: NextPage<LandingProps> = ({ image }) => {
-
-    const router: Router = useNextRouter();
+    const router:Router = useNextRouter();
 
     const mystyle = {
-        backgroundImage: `url(${image})`,
-        margin: "0px",
-        height: "calc(80vh)",
-        width: "100%",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat", 
-        backgroundSize: "cover",
-        transition: "all 0.2s linear",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center", 
-        color: "#fff",
-      };
-      
+      backgroundImage: `url(${image})`,
+      margin: "0px",
+      height: "calc(80vh)",
+      width:"100%",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      transition: "all 0.2s linear",
+      display: "flex",
+      flexDirection: "column" as const, 
+      justifyContent: "center" as const, 
+      alignItems: "center" as const, 
+      color: "#fff",
+    };
     return (
         <>
             <div style={mystyle}>
