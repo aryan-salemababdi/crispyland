@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 const Footer = () => {
   return (
     <>
-
-
       <Box>
       <AppBar position="static" sx={{ background: "#f69435", boxShadow: "none" }}>
         <Toolbar>
