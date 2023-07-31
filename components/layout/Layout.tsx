@@ -1,24 +1,24 @@
 import { NextPage } from "next";
-import type { ReactNode } from "react";
+import type {ReactNode} from "react"
+import Footer from "./Footer";
 import Header from "./Header";
-import Footer from "./Footer"
 
-type LayoutProps = {
+interface LayoutProps {
     children: ReactNode;
-  };
-  
-const Layout: NextPage<LayoutProps> = ({ children }) => {
+  }
+
+const Layout:NextPage<LayoutProps> = ({children}) => {
   return (
-    <>
-      <header>
+    <div>
+                  <header>
         <Header />
       </header>
       {children}
       <footer>
-        <Footer />
-      </footer>
-    </>
-  );
-};
+      <Footer />
+    </footer>
+        </div>
+  )
+}
 
 export default Layout;
