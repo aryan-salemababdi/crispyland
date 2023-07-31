@@ -35,6 +35,9 @@ function HideOnScroll(props: Props) {
 }
 const Header = (props: Props) => {
   const router: Router = useNextRouter();
+  
+  const currentPath = router.pathname;
+
 
   const [scroll, setScroll] = useState<number>(0);
 
@@ -51,7 +54,7 @@ const Header = (props: Props) => {
   return (
     <>
       <HideOnScroll>
-        <AppBar sx={{ background: scroll > 30 ? "#f69435" : "none", boxShadow: "none",position:"fixed" }}>
+        <AppBar sx={{ background: (scroll > 30 || currentPath!=="/") ?  "#f69435" : "none", boxShadow: "none",position:"fixed" }}>
           <Grid container justifyContent="space-between" alignItems="center">
             <Grid item mx={3}>
               <Button
@@ -118,9 +121,14 @@ const Header = (props: Props) => {
                   </Grid>
                   <Grid item>
                     <ListItem>
+                    <Link
+                        href="/"
+                        style={{ textDecoration: "none", color: "#ffffff" }}
+                      >
                       <Typography fontWeight="bold" variant="h6">
                         خانه
                       </Typography>
+                      </Link>
                     </ListItem>
                   </Grid>
                   <Grid item>

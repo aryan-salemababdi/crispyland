@@ -34,10 +34,8 @@ const WhyUs = () => {
           <Card>
             <Fast />
             <Typography
-         fontWeight="bold"
          variant="h6"
          textAlign="center"
-         color="#f69435"
          my={1}
          >
             سریع
@@ -49,10 +47,8 @@ const WhyUs = () => {
             <Food />
 
             <Typography
-         fontWeight="bold"
          variant="h6"
          textAlign="center"
-         color="#f69435"
          my={1}
          >
             بهترین سوخاری
@@ -63,10 +59,8 @@ const WhyUs = () => {
           <Card>
             <Choice />
             <Typography
-         fontWeight="bold"
          variant="h6"
          textAlign="center"
-         color="#f69435"
          my={1}
          >
             هر انتخابی
@@ -77,10 +71,8 @@ const WhyUs = () => {
           <Card>
             <Clock />
             <Typography
-         fontWeight="bold"
          variant="h6"
          textAlign="center"
-         color="#f69435"
          my={1}
          >
           24-7
