@@ -253,8 +253,6 @@ const Header: NextPage<HeaderProps> = ({children}) => {
           </Grid>
         </AppBar>
       </HideOnScroll>
-
-      {children}
     </>
   );
 };
