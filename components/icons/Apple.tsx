@@ -1,6 +1,6 @@
 function Apple() {
   return (
-    <svg width="60px" height="60px" viewBox="-5 0 60 60">
+    <svg width="30px" height="60px" viewBox="-5 0 60 60">
       <g
         id="Icons"
         stroke="none"

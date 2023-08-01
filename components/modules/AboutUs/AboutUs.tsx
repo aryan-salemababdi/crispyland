@@ -26,61 +26,7 @@ const AboutUs = () => {
           رضایت‌بخشیم. با کریسپی لند همیشه یک تجربه لذت‌بخش در انتظار شماست.
           بیایید لذت را با هر اشتها‌آورترین لقمه از مرغ سوخاری ما تجربه کنید!
         </Typography>
-        <Grid
-          container
-          display="grid"
-          gridAutoColumns="auto"
-          gridTemplateColumns={{
-            md: "repeat(4,1fr)",
-            xs: "repeat(2,1fr)",
-          }}
-          sx={{ gap: { md: 4, xs: 2 }, marginY: "40px" }}
-        >
-          <Grid
-            item
-            textAlign="center"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Box my={1}>
-              <Apple />
-            </Box>
-          </Grid>
-          <Grid
-            item
-            textAlign="center"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Box my={1}>
-              <Binance />
-            </Box>
-          </Grid>
-          <Grid
-            item
-            textAlign="center"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Box my={1}>
-              <SpaceX />
-            </Box>
-          </Grid>
-          <Grid
-            item
-            textAlign="center"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Box my={1}>
-              <Tesla />
-            </Box>
-          </Grid>
-        </Grid>
+      
       </Container>
     </>
   );

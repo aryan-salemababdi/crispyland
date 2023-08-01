@@ -15,7 +15,7 @@ const Footer = () => {
           sx={{ flexGrow: 1 }}
           textAlign="center"
           >
-            &copy; 2019-Now CrispyLand | Aryan Salemabadi
+            &copy; 2019-Now CrispyLand | Aryan Salemabadi | 09215531809
           </Typography>
         </Toolbar>
       </AppBar>

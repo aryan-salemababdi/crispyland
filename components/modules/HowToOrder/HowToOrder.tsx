@@ -31,7 +31,7 @@ const HowToOrder = () => {
             </ListItem>
             <ListItem>
               <Typography textAlign="right" fontWeight="bold" variant="h6" mx={1}>
-              برای ثبت سفارش، "مشاهده سبد خرید" یا "تسویه حساب" را انتخاب کنید
+              برای ثبت سفارش، مشاهده سبد خرید یا تسویه حساب را انتخاب کنید
               </Typography>
               <Circle sx={{ color: "#f69435", fontSize: 12 }} />
             </ListItem>
