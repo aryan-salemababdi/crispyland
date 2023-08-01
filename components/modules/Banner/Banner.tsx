@@ -19,7 +19,7 @@ type Router = ReturnType<typeof useNextRouter>;
       backgroundImage: `url(${image})`,
       margin: "0px",
       height: "calc(80vh)",
-      width:"100%",
+      width:"100wv",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
