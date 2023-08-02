@@ -32,14 +32,10 @@ interface dataType {
 }
 
 const MenuPage: NextPage<dataType> = ({ data }) => {
-  const [counter, setCounter] = useState<number>(0);
+
   const [search, setSearch] = useState<string>("");
   const selectedItem = useSelector(selectSelectedItem);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setCounter(selectedItem.length);
-  }, [selectedItem]);
 
   const totalPrice = selectedItem.reduce((total, itemId) => {
     const selectedItemPrice = data.find(item => item.id === itemId)?.price;
@@ -49,7 +45,7 @@ const MenuPage: NextPage<dataType> = ({ data }) => {
   dispatch(updateTotalPrice(totalPrice));
 
   const handleIncrement = (id: string) => {
-    setCounter(prevCounter => prevCounter + 1);
+
     dispatch(increment(id));
   };
 
