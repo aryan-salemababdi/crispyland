@@ -73,7 +73,7 @@ const Header: NextPage<HeaderProps> = ({children}) => {
           sx={{
             background: scroll > 30 || currentPath !== "/" ? "#f69435" : "none",
             boxShadow: "none",
-            position: "fixed",
+
           }}
         >
           <Grid container justifyContent="space-between" alignItems="center">
@@ -140,7 +140,7 @@ const Header: NextPage<HeaderProps> = ({children}) => {
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                         <Link
-                        href="/"
+                        href="/menu"
                         style={{ textDecoration: "none", color: "black" }}
                       >
                         <Typography fontWeight="bold" variant="h6">
@@ -207,7 +207,7 @@ const Header: NextPage<HeaderProps> = ({children}) => {
                   >
                     <ListItem>
                       <Link
-                        href="/"
+                        href="/menu"
                         style={{ textDecoration: "none", color: "#ffffff" }}
                       >
                         <Typography fontWeight="bold" variant="h6">
@@ -253,8 +253,6 @@ const Header: NextPage<HeaderProps> = ({children}) => {
           </Grid>
         </AppBar>
       </HideOnScroll>
-
-      {children}
     </>
   );
 };
