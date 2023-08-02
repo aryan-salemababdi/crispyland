@@ -65,7 +65,8 @@ const MenuPage: NextPage<dataType> = ({ data }) => {
 
   return (
     <>
-      {data ? (
+      {
+      data ? (
         <>
           <Typography
             fontWeight="bold"
