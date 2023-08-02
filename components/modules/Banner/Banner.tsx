@@ -45,7 +45,7 @@ type Router = ReturnType<typeof useNextRouter>;
     color="success"
     sx={{ margin: "10px 0px" }}
     onClick={() => {
-      router.push("/");
+      router.push("/menu");
     }}
   >
     <Typography fontWeight="div" variant="h6" textAlign="right">
