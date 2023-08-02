@@ -202,7 +202,7 @@ const MenuPage: NextPage<dataType> = ({ data }) => {
                   </Card>
                 </Grid>
               ))
-            ) : (
+             ) : (
               <Grid
               sx={{height:"100vh"}}
               >
