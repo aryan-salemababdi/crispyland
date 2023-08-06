@@ -1,11 +1,16 @@
 import { NextPage } from "next";
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedItem } from "../../../stores/slices/templateSlice/templateSlice";
-import { increment, decrement, updateTotalPrice } from "../../../stores/slices/templateSlice/templateSlice";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import {
+  increment,
+  decrement,
+  updateTotalPrice,
+} from "../../../stores/slices/templateSlice/templateSlice";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import {
   Button,
   Card,
@@ -13,6 +18,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Rating,
   TextField,
   Typography,
 } from "@mui/material";
@@ -23,7 +29,7 @@ interface MenuItem {
   name: string;
   dsc: string;
   price: number;
-  raate: number;
+  rate: number;
   country: string;
 }
 
@@ -32,24 +38,19 @@ interface dataType {
 }
 
 const MenuPage: NextPage<dataType> = ({ data }) => {
-  const [counter, setCounter] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
   const selectedItem = useSelector(selectSelectedItem);
+  const router = useRouter();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setCounter(selectedItem.length);
-  }, [selectedItem]);
-
   const totalPrice = selectedItem.reduce((total, itemId) => {
-    const selectedItemPrice = data.find(item => item.id === itemId)?.price;
+    const selectedItemPrice = data.find((item) => item.id === itemId)?.price;
     return total + (selectedItemPrice || 0);
   }, 0);
 
   dispatch(updateTotalPrice(totalPrice));
 
   const handleIncrement = (id: string) => {
-    setCounter(prevCounter => prevCounter + 1);
     dispatch(increment(id));
   };
 
@@ -97,62 +98,12 @@ const MenuPage: NextPage<dataType> = ({ data }) => {
             {search === "" ? (
               data.map((menu) => (
                 <Grid m={1} item key={menu.id}>
-                <Card>
-                  <CardMedia sx={{ height: 200 }} image={menu.img} title={menu.id} />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {menu.name}
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="address">
-                      <LocationOnIcon />
-                      {menu.country}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {menu.dsc}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      ${menu.price}
-                    </Typography>
-                    <Button size="small">مشاهده جزئیات</Button>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      color="warning"
-                      onClick={() => handleIncrement(menu.id)}
-                    >
-                      <AddIcon />
-                    </Button>
-                    <Typography variant="body2" color="text.secondary" ml={1}>
-                      {selectedItem.filter((item) => item === menu.id).length}
-                    </Typography>
-                    <Button
-                      size="small"
-                      color="warning"
-                      onClick={() => handleDecrement(menu.id)}
-                    >
-                      <RemoveIcon />
-                    </Button>
-                  </CardActions>
-                  <Typography
-                    variant="h6"
-                    color="green"
-                    fontWeight="bold"
-                    textAlign="center"
-                    my={1}
-                  >
-                    ${(
-                      selectedItem.filter((item) => item === menu.id).length * menu.price
-                    ).toFixed(2)}
-                  </Typography>
-                </Card>
-              </Grid>
-              ))
-            ) : filteredData.length > 0 ? (
-              filteredData.map((menu) => (
-                <Grid m={1} item key={menu.id}>
                   <Card>
-                    <CardMedia sx={{ height: 200 }} image={menu.img} title={menu.id} />
+                    <CardMedia
+                      sx={{ height: 200 }}
+                      image={menu.img}
+                      title={menu.id}
+                    />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                         {menu.name}
@@ -161,13 +112,26 @@ const MenuPage: NextPage<dataType> = ({ data }) => {
                         <LocationOnIcon />
                         {menu.country}
                       </Typography>
+                      <Rating
+                        name="half-rating"
+                        defaultValue={menu.rate}
+                        precision={0.5}
+                        readOnly
+                      />
                       <Typography variant="body2" color="text.secondary">
                         {menu.dsc}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         ${menu.price}
                       </Typography>
-                      <Button size="small">مشاهده جزئیات</Button>
+                      <Button
+                        size="small"
+                        onClick={() => {
+                          router.push(`/menu/${menu.id}`);
+                        }}
+                      >
+                        <Typography fontWeight="bold">مشاهده جزئیات</Typography>
+                      </Button>
                     </CardContent>
                     <CardActions>
                       <Button
@@ -195,26 +159,105 @@ const MenuPage: NextPage<dataType> = ({ data }) => {
                       textAlign="center"
                       my={1}
                     >
-                      ${(
-                        selectedItem.filter((item) => item === menu.id).length * menu.price
+                      $
+                      {(
+                        selectedItem.filter((item) => item === menu.id).length *
+                        menu.price
+                      ).toFixed(2)}
+                    </Typography>
+                  </Card>
+                </Grid>
+              ))
+            ) : filteredData.length > 0 ? (
+              filteredData.map((menu) => (
+                <Grid m={1} item key={menu.id}>
+                  <Card>
+                    <CardMedia
+                      sx={{ height: 200 }}
+                      image={menu.img}
+                      title={menu.id}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {menu.name}
+                      </Typography>
+                      <Typography gutterBottom variant="h5" component="address">
+                        <LocationOnIcon />
+                        {menu.country}
+                      </Typography>
+                      <Rating
+                        name="half-rating"
+                        defaultValue={menu.rate}
+                        precision={0.5}
+                        readOnly
+                      />
+                      <Typography variant="body2" color="text.secondary">
+                        {menu.dsc}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        ${menu.price}
+                      </Typography>
+                      <Button
+                        size="small"
+                        onClick={() => {
+                          router.push(`/menu/${menu.id}`);
+                        }}
+                      >
+                        <Typography fontWeight="bold">مشاهده جزئیات</Typography>
+                      </Button>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size="small"
+                        color="warning"
+                        onClick={() => handleIncrement(menu.id)}
+                      >
+                        <AddIcon />
+                      </Button>
+                      <Typography variant="body2" color="text.secondary" ml={1}>
+                        {selectedItem.filter((item) => item === menu.id).length}
+                      </Typography>
+                      <Button
+                        size="small"
+                        color="warning"
+                        onClick={() => handleDecrement(menu.id)}
+                      >
+                        <RemoveIcon />
+                      </Button>
+                    </CardActions>
+                    <Typography
+                      variant="h6"
+                      color="green"
+                      fontWeight="bold"
+                      textAlign="center"
+                      my={1}
+                    >
+                      $
+                      {(
+                        selectedItem.filter((item) => item === menu.id).length *
+                        menu.price
                       ).toFixed(2)}
                     </Typography>
                   </Card>
                 </Grid>
               ))
             ) : (
-              <Grid
-              sx={{height:"100vh"}}
-              >
-              <Typography variant="h5" textAlign="center" mt={2} color="red">
-                موردی یافت نشد
-              </Typography>
+              <Grid sx={{ height: "100vh" }}>
+                <Typography variant="h5" textAlign="center" mt={2} color="red">
+                  موردی یافت نشد
+                </Typography>
               </Grid>
             )}
           </Grid>
         </>
       ) : (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           loading
         </div>
       )}
