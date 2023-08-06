@@ -8,7 +8,7 @@ interface MenuItem {
     name:string;
     dsc:string;
     price:number;
-    raate:number;
+    rate:number;
     country:string;
     
 }

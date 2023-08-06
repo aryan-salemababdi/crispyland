@@ -18,6 +18,12 @@ const nextConfig = withPWA({
     skipWaiting:true,
     disable: process.env.NODE_ENV === 'development',
   }
-})
+});
+
+module.exports = {
+  images: {
+    domains: ['goldbelly.imgix.net'],
+  },
+};
 
 module.exports = nextConfig;
