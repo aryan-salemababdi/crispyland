@@ -147,6 +147,14 @@ const Header: NextPage<HeaderProps> = ({children}) => {
                           منو
                         </Typography>
                       </Link>
+                        <Link
+                        href="/categorys"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        <Typography fontWeight="bold" variant="h6">
+                          دسته بندی ها
+                        </Typography>
+                      </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
                         <Link
@@ -212,6 +220,21 @@ const Header: NextPage<HeaderProps> = ({children}) => {
                       >
                         <Typography fontWeight="bold" variant="h6">
                           منو
+                        </Typography>
+                      </Link>
+                    </ListItem>
+                  </Grid>
+                  <Grid
+                    item
+                    sx={{ display: { md: "block", sm: "none", xs: "none" } }}
+                  >
+                    <ListItem>
+                      <Link
+                        href="/categorys"
+                        style={{ textDecoration: "none", color: "#ffffff" }}
+                      >
+                        <Typography fontWeight="bold" variant="h6">
+                          دسته بندی
                         </Typography>
                       </Link>
                     </ListItem>
