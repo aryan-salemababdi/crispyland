@@ -54,7 +54,7 @@ const Guide = () => {
           justifyContent="center"
           my={{xs: 5, md: 0}}
           >
-            <Link href="/" style={{ textDecoration: "none", color: "black" }}>
+            <Link href="/categorys" style={{ textDecoration: "none", color: "black" }}>
               <Card sx={{ width: "150px", textAlign: "center" }}>
                 <Typography
                   variant="h6"
