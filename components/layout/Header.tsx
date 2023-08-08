@@ -147,6 +147,8 @@ const Header: NextPage<HeaderProps> = ({children}) => {
                           منو
                         </Typography>
                       </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
                         <Link
                         href="/categorys"
                         style={{ textDecoration: "none", color: "black" }}
