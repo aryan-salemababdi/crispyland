@@ -60,7 +60,7 @@ export async function getStaticProps(context: any) {
   const { params } = context;
   const { id } = params;
 
-  const res = await fetch(`http://localhost:4000/fried-chicken/${id}`);
+  const res = await fetch(`http://localhost:3000/fried-chicken/${id}`);
   const data = await res.json();
 
   if (!data.id) {
