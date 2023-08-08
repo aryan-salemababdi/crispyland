@@ -41,7 +41,7 @@ export async function getServerSideProps(context:any){
         query: { rate },
       } = context;
 
-    const res = await fetch("http://localhost:3000/fried-chicken");
+    const res = await fetch("http://localhost:4000/fried-chicken");
 
     const data = await res.json();
 
