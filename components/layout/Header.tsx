@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactElement,ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { useRouter as useNextRouter } from "next/router";
 import {
   AppBar,
@@ -38,7 +38,7 @@ function HideOnScroll(props: HeaderProps) {
   );
 }
 
-const Header: NextPage<HeaderProps> = ({children}) => {
+const Header: NextPage<HeaderProps> = ({ children }) => {
   const router: Router = useNextRouter();
 
   const currentPath = router.pathname;
@@ -73,7 +73,6 @@ const Header: NextPage<HeaderProps> = ({children}) => {
           sx={{
             background: scroll > 30 || currentPath !== "/" ? "#f69435" : "none",
             boxShadow: "none",
-
           }}
         >
           <Grid container justifyContent="space-between" alignItems="center">
@@ -91,7 +90,7 @@ const Header: NextPage<HeaderProps> = ({children}) => {
               <Button
                 color="inherit"
                 onClick={() => {
-                  router.push("/");
+                  router.push("/signup");
                 }}
                 size="medium"
                 variant="text"
@@ -128,46 +127,56 @@ const Header: NextPage<HeaderProps> = ({children}) => {
                           "aria-labelledby": "basic-button",
                         }}
                       >
-                        <MenuItem onClick={handleClose}>
-                          <Link
-                            href="/"
-                            style={{ textDecoration: "none", color: "black" }}
-                          >
+                        <Link
+                          href="/"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <MenuItem onClick={handleClose}>
                             <Typography fontWeight="bold" variant="h6">
                               خانه
                             </Typography>
-                          </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                          </MenuItem>
+                        </Link>
                         <Link
-                        href="/menu"
-                        style={{ textDecoration: "none", color: "black" }}
-                      >
-                        <Typography fontWeight="bold" variant="h6">
-                          منو
-                        </Typography>
-                      </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                          href="/menu"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            <Typography fontWeight="bold" variant="h6">
+                              منو
+                            </Typography>
+                          </MenuItem>
+                        </Link>
                         <Link
-                        href="/"
-                        style={{ textDecoration: "none", color: "black" }}
-                      >
-                        <Typography fontWeight="bold" variant="h6">
-                          درباره ما
-                        </Typography>
-                      </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                          href="/categorys"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            <Typography fontWeight="bold" variant="h6">
+                              دسته بندی ها
+                            </Typography>
+                          </MenuItem>
+                        </Link>
                         <Link
-                        href="/"
-                        style={{ textDecoration: "none", color: "black" }}
-                      >
-                        <Typography fontWeight="bold" variant="h6">
-                          تماس با ما
-                        </Typography>
-                      </Link>
-                        </MenuItem>
+                          href="/"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            <Typography fontWeight="bold" variant="h6">
+                              درباره ما
+                            </Typography>
+                          </MenuItem>
+                        </Link>
+                        <Link
+                          href="/"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            <Typography fontWeight="bold" variant="h6">
+                              تماس با ما
+                            </Typography>
+                          </MenuItem>
+                        </Link>
                       </Menu>
                     </ListItem>
                   </Grid>
@@ -212,6 +221,21 @@ const Header: NextPage<HeaderProps> = ({children}) => {
                       >
                         <Typography fontWeight="bold" variant="h6">
                           منو
+                        </Typography>
+                      </Link>
+                    </ListItem>
+                  </Grid>
+                  <Grid
+                    item
+                    sx={{ display: { md: "block", sm: "none", xs: "none" } }}
+                  >
+                    <ListItem>
+                      <Link
+                        href="/categorys"
+                        style={{ textDecoration: "none", color: "#ffffff" }}
+                      >
+                        <Typography fontWeight="bold" variant="h6">
+                          دسته بندی
                         </Typography>
                       </Link>
                     </ListItem>

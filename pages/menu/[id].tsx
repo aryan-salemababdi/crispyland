@@ -41,7 +41,7 @@ const Details:NextPage<Menu> = ({data}) => {
 export default Details;
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:4000/fried-chicken");
+  const res = await fetch(`${process.env.BASE_URL}/fried-chicken`);
   const json = await res.json();
   const data = json.slice(0, 10);
 
@@ -60,7 +60,7 @@ export async function getStaticProps(context: any) {
   const { params } = context;
   const { id } = params;
 
-  const res = await fetch(`http://localhost:4000/fried-chicken/${id}`);
+  const res = await fetch(`${process.env.BASE_URL}/fried-chicken/${id}`);
   const data = await res.json();
 
   if (!data.id) {
