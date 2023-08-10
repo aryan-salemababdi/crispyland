@@ -90,7 +90,7 @@ const Header: NextPage<HeaderProps> = ({ children }) => {
               <Button
                 color="inherit"
                 onClick={() => {
-                  router.push("/");
+                  router.push("/signup");
                 }}
                 size="medium"
                 variant="text"
