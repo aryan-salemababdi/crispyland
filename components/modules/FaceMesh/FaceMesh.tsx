@@ -9,17 +9,34 @@ import { useMediaQuery,Typography } from "@mui/material";
 interface FacemeshType {
 
   onSubmitFacemesh: (authFacemesh:boolean) => void;
+  auth:{
+    name:string;
+    lastName:string;
+    email:string;
+    password:string;
+  }
 
 }
 
 
 
-const FaceMesh:NextPage<FacemeshType> = ({onSubmitFacemesh}) => {
+const FaceMesh:NextPage<FacemeshType> = ({onSubmitFacemesh,auth}) => {
+
+  
   const [authFacemesh,setAuthFacemesh] = useState<boolean>(false)
   const isMdScreen = useMediaQuery("(min-width: 960px)");
   const widthValue = isMdScreen ? 600 : 200;
   const webcamRef = useRef<any>(null);
   const canvasRef = useRef<any>(null);
+
+    const sendDataHandller = async () =>{
+      const res = await fetch("/api/auth/signup",{
+        method:"POST",
+        body:JSON.stringify(auth),
+        headers : {"Content-Type": "application/json"},
+      })
+      const data = await res.json();
+    };
 
   const runFaceDetection = async () => {
     const net = await blazeface.load();
@@ -49,7 +66,9 @@ const FaceMesh:NextPage<FacemeshType> = ({onSubmitFacemesh}) => {
 
         const predictions:any = await net.estimateFaces(video) ;
         if (predictions[0].landmarks.length > 5) {
+
           setAuthFacemesh(true);
+          sendDataHandller();
           onSubmitFacemesh(authFacemesh);
         } else {
           setAuthFacemesh(false);
