@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Typography, Grid, Card, TextField, Button } from "@mui/material";
+import FaceMesh from "../../modules/FaceMesh/FaceMesh";
+import { useRouter } from "next/router";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,7 +26,9 @@ const validationSchema = Yup.object().shape({
 
 const SignupForm = () => {
 
-  const [submit,setSubmit] = useState<boolean>(false)
+  const [submit,setSubmit] = useState<boolean>(false);
+
+  const router = useRouter();
 
 
   const formik = useFormik({
@@ -152,6 +156,18 @@ const SignupForm = () => {
           </Card>
         </Grid>
       </Grid>
+      {
+        submit?
+      <FaceMesh
+        onSubmitFacemesh={(authFacemesh) => {
+          if (authFacemesh) {
+            router.push("/");
+          }
+        }}
+      />
+      :
+      ""
+}
     </div>
   );
 };
