@@ -30,6 +30,13 @@ const SignupForm = () => {
 
   const router = useRouter();
 
+  const [auth, setAuth] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    password: ""
+  });
+
 
   const formik = useFormik({
     initialValues: {
@@ -39,13 +46,8 @@ const SignupForm = () => {
       password: "",
       confirmPassword: "",
     },
-    onSubmit: async (values) => {
-      const res = await fetch("/api/auth/signup",{
-        method:"POST",
-        body:JSON.stringify(values),
-        headers : {"Content-Type": "application/json"},
-      })
-      const data = await res.json();
+    onSubmit: (values) => {
+      setAuth(values);
       setSubmit(true);
     },
     validationSchema: validationSchema,
@@ -159,6 +161,7 @@ const SignupForm = () => {
       {
         submit?
       <FaceMesh
+      auth = {auth}
         onSubmitFacemesh={(authFacemesh) => {
           if (authFacemesh) {
             router.push("/");
