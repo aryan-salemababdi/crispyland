@@ -80,7 +80,7 @@ const Header: NextPage<HeaderProps> = ({ children }) => {
               <Button
                 color="warning"
                 onClick={() => {
-                  router.push("/google.com");
+                  router.push("/signin");
                 }}
                 size="medium"
                 variant="contained"
