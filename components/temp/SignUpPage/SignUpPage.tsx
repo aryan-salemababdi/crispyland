@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Typography, Grid, Card, TextField, Button } from "@mui/material";
 import FaceMesh from "../../modules/FaceMesh/FaceMesh";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -155,6 +156,16 @@ const SignupForm = () => {
                 </Grid>
               </Grid>
             </form>
+            <Link  href="/login" style={{textDecoration:"none"}}>
+              <Typography
+              fontWeight="bold"
+              variant="body1"
+              textAlign="center"
+              m="10px 0px"
+              >
+                ورود
+              </Typography>
+            </Link>
           </Card>
         </Grid>
       </Grid>
