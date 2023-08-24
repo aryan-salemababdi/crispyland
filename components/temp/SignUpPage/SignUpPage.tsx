@@ -175,7 +175,7 @@ const SignupForm = () => {
       auth = {auth}
         onSubmitFacemesh={(authFacemesh) => {
           if (authFacemesh) {
-            router.push("/");
+            router.push("/signin");
           }
         }}
       />

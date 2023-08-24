@@ -47,7 +47,7 @@ const SigninPage = () => {
         <Grid item>
           <Card sx={{ borderTop: "10px solid #f69435", padding: "20px" }}>
             <Typography textAlign="center" fontWeight="bold" variant="h5">
-              ورود
+               ورود
             </Typography>
             <form onSubmit={formik.handleSubmit}>
               <Grid container justifyContent="center">
